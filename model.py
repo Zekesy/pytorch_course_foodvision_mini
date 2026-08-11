@@ -18,11 +18,10 @@ def create_effnetb2_model(num_classes:int=3,
         transforms (torchvision.transforms): EffNetB2 image transforms.
     """
     # Create EffNetB2 pretrained weights, transforms and model
-    weights = torchvision.models.EfficientNet_B2_Weights.DEFAULT
-    transforms = weights.transforms()
-    model = torchvision.models.efficientnet_b2(weights=weights)
+    weights = None    
+    transforms = torchvision.models.EfficientNet_B2_Weights.DEFAULT.transforms()
 
-    # Freeze all layers in base model
+    model = torchvision.models.efficientnet_b2(weights=weights)    # Freeze all layers in base model
     for param in model.parameters():
         param.requires_grad = False
 
